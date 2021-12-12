@@ -1,1 +1,1 @@
-# nail-salon-web-application
+# nail-salon
