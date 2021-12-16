@@ -13,7 +13,8 @@ const CustomizedBody = React.forwardRef((props, ref) => {
         backgroundColor: "#F4EDE5",
         paddingTop: "120px",
         paddingBottom: "50px",
-        minHeight: "80vh"
+        minHeight: "80vh",
+        padding: "10rem"
       }}>
       {children}
     </div>

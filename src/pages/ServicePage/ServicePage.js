@@ -1,49 +1,69 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { Box ,Tab} from "@mui/material";
-import {TabContext, TabList,TabPanel} from '@mui/lab';
+import { Box, Stack } from "@mui/material";
 import CustomizedTabContext from "../../components/Tab/CustomizedTabContext";
-import CustomizedButtons from "../../components/CustomizedButtons";
 import CustomizedTabList from "../../components/Tab/CustomizedTabList";
 import CustomizedTab from "../../components/Tab/CustomizedTab";
+import ServiceTabStyle from "../../styles/ServiceTabStyle";
+import CustomizedPriceTable from "../../components/CustomizedPriceTable";
+import CustomizedBody from "../../components/CustomizedBody";
+import CustomizedTabPanel from "../../components/Tab/CustomizedTabPanel";
+import {data} from "../../database/data"
+
+const NUMBER_OF_ITEMS_IN_A_PRICE_TABLE = 7
+const HandlePriceMenu = ({ service }) => {
+  let tables = []
+  for (let i = 0; i < service.menu.length;) {
+    let table = []
+    for (let j = 0; j < NUMBER_OF_ITEMS_IN_A_PRICE_TABLE && i < service.menu.length; j++) {
+      table.push(service.menu[i])
+      i++
+    }
+    tables.push(table)
+  }
+  return (<>
+    {
+      tables.map((table, key) => {
+        return (<CustomizedPriceTable serviceName={service.name} table={table}></CustomizedPriceTable>)
+      })
+    }
+  </>)
+}
 
 function ServicePage() {
-    const [value, setValue] = React.useState('1');
+  const [value, setValue] = React.useState(1);
+  const handleChange = (newValue) => {
+    setValue(newValue);
 
-    const handleChange = (newValue) => {
-      setValue(newValue);
-      
-    };
+  };
+  const serviceTabStyle = ServiceTabStyle();
   return (
-    <div>
-     <Box sx={{ padding:"10px", width: "100%", typography: "body1" }}>
-     <CustomizedTabContext value = {value}>
-          <CustomizedTabList onChange={handleChange}>
-            <CustomizedTab title="Item One" value="1"></CustomizedTab>
-            <CustomizedTab title="Item Two" value="2"></CustomizedTab>
-            <CustomizedTab title="Item Three" value="3"></CustomizedTab>
-          </CustomizedTabList>
-         <CustomizedButtons value = "1">Item One</CustomizedButtons>
-         <CustomizedButtons value = "2">Item Two</CustomizedButtons>
-         <CustomizedButtons value = "3">Item Three</CustomizedButtons>
-     </CustomizedTabContext>
-     </Box>
+    <CustomizedBody>
+      <NavBar></NavBar>
+      {/* {data.services.menu.map((item,key) => {
+                console.log(item)
+              })} */}
+      <div className={serviceTabStyle.serviceContainer} >
+        <div className={serviceTabStyle.serviceHeader}>Our Service</div>
+        <Box sx={{ width: "100%", typography: "body1" }}>
+          <CustomizedTabContext value={value}>
+            <CustomizedTabList onChange={handleChange}>
+              {data.services.map((service, key) => {
+                return (<CustomizedTab title={service.name} description={service.description} value={key + 1} key={key} ></CustomizedTab>)
+              })}
+            </CustomizedTabList>
+            {data.services.map((service, key) => {
+              return (<CustomizedTabPanel key={key} value={key+1}>
+                <HandlePriceMenu service = {service} key={key}></HandlePriceMenu>           
+              </CustomizedTabPanel>)
+            })}
+          </CustomizedTabContext>
+        </Box>
 
-      <Box sx={{ width: "100%", typography: "body1" }}>
-        <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Item One" value="1" />
-              <Tab label="Item Two" value="2" />
-              <Tab label="Item Three" value="3" />
-            </TabList>
-          </Box>
-          <TabPanel value="1">Item One</TabPanel>
-          <TabPanel value="2">Item Two</TabPanel>
-          <TabPanel value="3">Item Three</TabPanel>
-        </TabContext>
-      </Box>
-    </div>
+      </div>
+
+    </CustomizedBody>
+
   );
 }
 

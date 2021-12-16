@@ -44,8 +44,18 @@ const ButtonStyle = makeStyles((theme) => ({
     mixBlendMode: "normal",
   },
   type4: {
-    backgroundColor: "transparent",
-    color: orangeColor,
+    position: "absolute",
+    padding: "0.75rem 3rem",
+    left: "20rem",
+    top: "35rem",
+    color: "#FFFFFF",
+    fontSize: "1.5rem",
+    background: "rgba(248, 122, 19, 0.15)",
+    border: "3px solid #F87A13",
+    boxSizing: "border-box",
+    backdropFilter: "blur(50px)",
+    borderRadius: "50px",
+    mixBlendMode: "normal",
   },
 }));
 

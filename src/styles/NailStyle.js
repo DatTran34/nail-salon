@@ -23,7 +23,11 @@ const NailStyle = makeStyles((theme) => ({
   image: {
     width: "22rem",
     height: "22rem",
-    backgroundColor: "#F87A13",
+    backgroundColor: "#ffffff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "2.5rem"
   },
   grid:{
     display: "flex",

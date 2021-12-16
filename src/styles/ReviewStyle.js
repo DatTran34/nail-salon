@@ -1,20 +1,14 @@
 import { makeStyles } from "@mui/styles";
-const HeroStyle = makeStyles((theme) => ({
-  root: {
-    
-  },
+const NailStyle = makeStyles((theme) => ({
   heroContainer: {
     padding:"20px"
   },
-  heroHeader: {
+  title: {
     fontWeight:"600",
     fontSize:"4rem",
     overflowWrap: "break-word",
     textAlign: "center",
     alignItems: "center",
-    padding: "5rem",
-    margin: "auto"
-
     // overflow-wrap: break-word;
   },
   heroContent: {
@@ -29,8 +23,13 @@ const HeroStyle = makeStyles((theme) => ({
     width: "24rem",
     height: "35rem",
     backgroundColor: "#F87A13",
-    borderRadius: "50px"
+    borderRadius: "50px",
+
+  },
+  grid:{
+    display: "flex",
+    justifyContent: "center"
   }
 }));
 
-export default HeroStyle;
+export default NailStyle;
