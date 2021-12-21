@@ -52,6 +52,10 @@ const NavBarStyle = makeStyles((theme) => ({
   },
   link: {
     cursor: "pointer",
+    textDecoration: "none",
+    fontSize: "1rem",
+    fontWeight: "500",
+    color: "black"
   }
 }));
 

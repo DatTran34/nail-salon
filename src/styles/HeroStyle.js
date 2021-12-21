@@ -4,7 +4,7 @@ const HeroStyle = makeStyles((theme) => ({
     
   },
   heroContainer: {
-    padding:"20px"
+    padding:"0 20px"
   },
   heroHeader: {
     fontWeight:"600",

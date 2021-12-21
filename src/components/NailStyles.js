@@ -3,6 +3,7 @@ import React from "react";
 import NailStyle from "../styles/NailStyle";
 import {images} from "../database/images";
 import CustomizedButtons from "./CustomizedButtons";
+import CustomizedTitle from "./CustomizedTitle";
 
 function NailStyles() {
   const nailStyle = NailStyle();
@@ -13,7 +14,7 @@ function NailStyles() {
       justifyContent="center"
       alignItems="center"
     >
-      <div className={nailStyle.title}>Nail Styles</div>
+       <CustomizedTitle direction="row" reverse>Nail Styles</CustomizedTitle>
       <Grid container spacing={10} mb={5} >
         {images.map(({ id, src }) => (
           (id === 5 ? (

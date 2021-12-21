@@ -3,6 +3,7 @@ import { Grid, Stack } from "@mui/material";
 import modelImage from "../images/model.png";
 import CustomizedButtons from "../components/CustomizedButtons";
 import HeroStyle from "../styles/HeroStyle";
+import CustomizedTitle from './CustomizedTitle';
 function Hero() {
     const heroStyle = HeroStyle();
   return (
@@ -13,11 +14,8 @@ function Hero() {
             direction="column"
             justifyContent="center"
             alignItems="center"
-            spacing={2}
           >
-            <div className={heroStyle.heroHeader}>
-              We are looking to make you beautiful
-            </div>
+            <CustomizedTitle direction="column">We are looking to make you beautiful</CustomizedTitle>
             <div className={heroStyle.heroContent}>
               If you’ve ever wondered what nailstyles suit you and how you
               should have gorgeous nails, here is a list of top styles for you.

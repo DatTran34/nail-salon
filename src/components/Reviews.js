@@ -2,8 +2,9 @@ import { Grid, Stack } from '@mui/material'
 import React from 'react'
 import modelImage from "../images/model2.png";
 import ReviewStyle from "../styles/ReviewStyle";
-import {avatarCustomers} from "../database/images";
+import {reviews} from "../database/data";
 import CustomizedButtons from './CustomizedButtons';
+import {FaStar} from "react-icons/fa"
 function Reviews() {
     const reviewStyle = ReviewStyle();
     return (
@@ -15,19 +16,25 @@ function Reviews() {
                     <CustomizedButtons type4>Explore</CustomizedButtons>
                 </Stack>
             </Grid>
-            <Grid item container xs={12} md={6}>
-                <Grid item xs={12}>
-                    <Stack direction="column" bgcolor="#ffffff">
+            <Grid item container spacing={3} height="100%" xs={12} md={6} mt={15}>
+                {reviews.map(({name, img, comment, star}) => {
+                    return <Grid item xs={12} >
+                    <Stack direction="column" bgcolor="#ffffff" p={2}>
                         <Stack direction="row">
-                            <img/>
-                            <Stack direction="column">
-                                <div>Name</div>
-                                <div>star</div>
+                            <img style={{width: "3rem", height: "3rem", borderRadius: "50px"}}src={img}/>
+                            <Stack direction="column" px={2}>
+                                <Stack pb={1} fontWeight="600">{name}</Stack>
+                                <Stack direction="row">
+                                    {[...Array(star).keys()].map(() => {
+                                        return <FaStar style={{color: "#fec107"}}/>
+                                    })}
+                                </Stack>
                             </Stack>
                         </Stack>
-                        <div>“They do an awesome job especially with dip powder gel”</div>
+                        <Stack pt={2} fontWeight="600">{`"${comment}"`}</Stack>
                     </Stack>
                 </Grid>
+                })}
             </Grid>
         </Grid>
     )

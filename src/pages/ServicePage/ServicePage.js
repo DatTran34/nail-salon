@@ -9,8 +9,12 @@ import CustomizedPriceTable from "../../components/CustomizedPriceTable";
 import CustomizedBody from "../../components/CustomizedBody";
 import CustomizedTabPanel from "../../components/Tab/CustomizedTabPanel";
 import {data} from "../../database/data"
+import Location from "../../components/Location"
+import CustomizedTitle from "../../components/CustomizedTitle";
+
 
 const NUMBER_OF_ITEMS_IN_A_PRICE_TABLE = 7
+
 const HandlePriceMenu = ({ service }) => {
   let tables = []
   for (let i = 0; i < service.menu.length;) {
@@ -44,7 +48,7 @@ function ServicePage() {
                 console.log(item)
               })} */}
       <div className={serviceTabStyle.serviceContainer} >
-        <div className={serviceTabStyle.serviceHeader}>Our Service</div>
+      <CustomizedTitle direction="row" >Our Service</CustomizedTitle>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <CustomizedTabContext value={value}>
             <CustomizedTabList onChange={handleChange}>
@@ -59,7 +63,7 @@ function ServicePage() {
             })}
           </CustomizedTabContext>
         </Box>
-
+            <Location></Location>
       </div>
 
     </CustomizedBody>
